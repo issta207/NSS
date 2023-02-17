@@ -27,7 +27,7 @@ def train(args, model, device, train_loader, optimizer, epoch):
     """Training"""
     model.train()
     criterion = nn.CrossEntropyLoss()
-    for i in range(10):
+    for i in range(2):
         with tqdm(train_loader[i]) as loader:
             for data, target in loader:
                 data, target = data.to(device), target.to(device)
