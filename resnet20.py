@@ -93,7 +93,7 @@ class ResNet20(nn.Module):
         # return x,tamp
         # print(self.net[1])
         # print(self.net[:4](x).shape)
-        return self.net(x), self.net[:4](x)
+        return self.net(x), self.net[:1](x)
 
 
 

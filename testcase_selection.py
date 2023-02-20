@@ -60,16 +60,12 @@ if __name__ == '__main__':
 
             test_x = test_x.cuda()
             test_x_adv = benign_aug(test_x)
-
-
             predict_y_adv, adv_features = testmodel(test_x_adv)
-            pred.append(predict_y_adv.detach().cpu().numpy())
+
 
             neuron_diff = F.mse_loss(adv_features, clean_features, reduction='none').flatten(start_dim=1)
             neuron_diff /= clean_features.flatten(start_dim=1).max(dim=1)[0].unsqueeze(1).repeat(1,neuron_num)
-
             neuron_diff_perSample.append(neuron_diff[:, neuron_idx].mean(axis=1))
-
 
 
             all_adv_samples.append(test_x_adv.cpu().numpy())
